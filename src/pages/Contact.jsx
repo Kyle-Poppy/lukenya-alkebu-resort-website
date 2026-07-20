@@ -57,28 +57,49 @@ export default function Contact() {
                 </div>
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-                  <Phone className="text-burnt shrink-0 mt-1" size={24} />
-                  <div>
-                    <h3 className="font-heading text-lg font-bold text-navy">
-                      Call Us
-                    </h3>
-                    <p className="text-muted-foreground mt-2">
-                      +254 700 000 000
-                    </p>
-                  </div>
-                </div>
+  <Phone className="text-burnt shrink-0 mt-1" size={24} />
+  <div>
+    <h3 className="font-heading text-lg font-bold text-navy">
+      Call Us
+    </h3>
+
+    <p className="text-muted-foreground mt-2">
+      <a
+        href="tel:+254703841682"
+        className="hover:text-burnt"
+      >
+        0703 841 682
+      </a>
+
+      <br />
+
+      <a
+        href="tel:+254731796683"
+        className="hover:text-burnt"
+      >
+        0731 796 683
+      </a>
+    </p>
+  </div>
+</div>
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-                  <Mail className="text-burnt shrink-0 mt-1" size={24} />
-                  <div>
-                    <h3 className="font-heading text-lg font-bold text-navy">
-                      Email
-                    </h3>
-                    <p className="text-muted-foreground mt-2">
-                      info@lukenyaalkebu.com
-                    </p>
-                  </div>
-                </div>
+  <Mail className="text-burnt shrink-0 mt-1" size={24} />
+  <div>
+    <h3 className="font-heading text-lg font-bold text-navy">
+      Email
+    </h3>
+
+    <p className="text-muted-foreground mt-2">
+      <a
+        href="mailto:lukenyaalkeburesort2019@gmail.com"
+        className="hover:text-burnt break-all"
+      >
+        lukenyaalkeburesort2019@gmail.com
+      </a>
+    </p>
+  </div>
+</div>
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
                   <Clock className="text-burnt shrink-0 mt-1" size={24} />

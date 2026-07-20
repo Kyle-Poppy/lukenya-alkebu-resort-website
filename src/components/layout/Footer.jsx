@@ -34,28 +34,32 @@ export default function Footer() {
             <div className="mt-6 flex gap-5">
 
               <a
-                href="#"
-                aria-label="Facebook"
-                className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
-              >
-                <Facebook size={22} />
-              </a>
+  href="https://www.facebook.com/lukenyaalkeburesort"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Facebook"
+  className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
+>
+  <Facebook size={22} />
+</a>
 
               <a
-                href="#"
-                aria-label="Instagram"
-                className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
-              >
-                <Instagram size={22} />
-              </a>
+  href="https://www.instagram.com/lukenya_alkeburesort/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Instagram"
+  className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
+>
+  <Instagram size={22} />
+</a>
 
-              <a
+              {/*<a
                 href="#"
                 aria-label="Twitter"
                 className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
               >
                 <Twitter size={22} />
-              </a>
+              </a>*/}
 
             </div>
 
@@ -112,31 +116,40 @@ export default function Footer() {
                 </span>
               </li>
 
-              <li className="flex items-center gap-3">
-                <Phone
-                  size={18}
-                  className="shrink-0 text-burnt"
-                />
-                <a
-                  href="tel:+254700000000"
-                  className="text-cream/75 transition-colors duration-300 hover:text-burnt"
-                >
-                  +254 700 000 000
-                </a>
-              </li>
+              <li className="flex items-start gap-3">
+  <Phone
+    size={18}
+    className="shrink-0 text-burnt mt-1"
+  />
+  <div className="text-cream/75">
+    <a
+      href="tel:+254703841682"
+      className="block transition-colors duration-300 hover:text-burnt"
+    >
+      0703 841 682
+    </a>
+
+    <a
+      href="tel:+254731796683"
+      className="block transition-colors duration-300 hover:text-burnt"
+    >
+      0731 796 683
+    </a>
+  </div>
+</li>
 
               <li className="flex items-center gap-3">
-                <Mail
-                  size={18}
-                  className="shrink-0 text-burnt"
-                />
-                <a
-                  href="mailto:info@lukenyaalkebu.com"
-                  className="text-cream/75 transition-colors duration-300 hover:text-burnt"
-                >
-                  info@lukenyaalkebu.com
-                </a>
-              </li>
+  <Mail
+    size={18}
+    className="shrink-0 text-burnt"
+  />
+  <a
+    href="mailto:lukenyaalkeburesort2019@gmail.com"
+    className="text-cream/75 transition-colors duration-300 hover:text-burnt break-all"
+  >
+    lukenyaalkeburesort2019@gmail.com
+  </a>
+</li>
 
             </ul>
 
