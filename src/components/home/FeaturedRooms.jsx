@@ -34,11 +34,11 @@ export default function FeaturedRooms() {
               <div className="overflow-hidden">
 
                 <img
-                  src={room.image}
-                  alt={room.name}
-                  loading="lazy"
-                  className="h-56 w-full object-cover transition-transform duration-500 hover:scale-110"
-                />
+  src={room.images[0]}
+  alt={room.name}
+  loading="lazy"
+  className="w-full h-56 object-cover object-center transition-transform duration-500 hover:scale-110"
+/>
 
               </div>
 

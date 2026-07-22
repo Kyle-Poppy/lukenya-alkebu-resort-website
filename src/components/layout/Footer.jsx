@@ -37,7 +37,7 @@ export default function Footer() {
   href="https://www.facebook.com/lukenyaalkeburesort"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Facebook"
+  onClick={() => console.log("Facebook clicked")}
   className="text-cream/70 transition-all duration-300 hover:text-burnt hover:-translate-y-1"
 >
   <Facebook size={22} />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useBooking } from "@/context/BookingContext";
 
 export default function CTABanner({
   title,
@@ -7,6 +8,8 @@ export default function CTABanner({
   buttonText = "Book Your Stay",
   to = "/contact",
 }) {
+  const { openBooking } = useBooking();
+
   return (
     <section className="relative overflow-hidden bg-navy py-20 px-6">
 
@@ -33,12 +36,12 @@ export default function CTABanner({
           </p>
         )}
 
-        <Link
-          to={to}
+        <button
+          onClick={openBooking}
           className="inline-flex items-center justify-center mt-10 px-8 py-4 rounded-full bg-burnt text-white font-semibold shadow-lg hover:bg-burnt-light hover:scale-105 transition-all duration-300"
         >
           {buttonText}
-        </Link>
+        </button>
       </motion.div>
     </section>
   );

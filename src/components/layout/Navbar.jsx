@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/resortData";
+import { useBooking } from "@/context/BookingContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
   const location = useLocation();
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,20 +51,18 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto flex h-20 items-center justify-between px-4">
-
         <Link
-                to="/"
-               className="flex items-center"
+          to="/"
+          className="flex items-center"
         >
           <img
-  src="/images/logo.png"
-  alt="Lukenya Alkebu Resort"
-  className="h-20 w-20 rounded-full object-cover bg-white p-1 shadow-lg transition-transform duration-300 hover:scale-105"
-/>
+            src="/images/logo.png"
+            alt="Lukenya Alkebu Resort"
+            className="h-20 w-20 rounded-full object-cover bg-white p-1 shadow-lg transition-transform duration-300 hover:scale-105"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
-
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -78,13 +79,12 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-          <Link
-            to="/contact"
+          <button
+            onClick={openBooking}
             className="rounded-full bg-burnt px-6 py-3 font-semibold text-cream transition-colors duration-300 hover:bg-burnt-light"
           >
             Book Now
-          </Link>
-
+          </button>
         </nav>
 
         <button
@@ -95,7 +95,6 @@ export default function Navbar() {
         >
           {open ? <X size={30} /> : <Menu size={30} />}
         </button>
-
       </div>
 
       <div
@@ -104,9 +103,7 @@ export default function Navbar() {
         }`}
       >
         <nav className="border-t border-white/10 bg-navy">
-
           <div className="flex flex-col py-5">
-
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -124,18 +121,17 @@ export default function Navbar() {
             ))}
 
             <div className="px-6 pt-5">
-
-              <Link
-                to="/contact"
-                className="block rounded-full bg-burnt py-3 text-center font-semibold text-cream transition-colors duration-300 hover:bg-burnt-light"
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  openBooking();
+                }}
+                className="block w-full rounded-full bg-burnt py-3 text-center font-semibold text-cream transition-colors duration-300 hover:bg-burnt-light"
               >
                 Book Now
-              </Link>
-
+              </button>
             </div>
-
           </div>
-
         </nav>
       </div>
     </header>

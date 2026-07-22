@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useBooking } from "@/context/BookingContext";
 
 export default function Hero() {
+  const { openBooking } = useBooking();
+
   return (
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
 
@@ -41,12 +44,12 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
 
-          <Link
-            to="/contact"
+          <button
+            onClick={openBooking}
             className="px-8 py-4 rounded-full bg-burnt text-white font-semibold hover:bg-burnt-light transition-all duration-300"
           >
             Book Your Stay
-          </Link>
+          </button>
 
           <Link
             to="/gallery"

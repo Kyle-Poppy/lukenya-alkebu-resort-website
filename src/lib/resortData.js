@@ -45,70 +45,109 @@ export const services = [
 
 export const rooms = [
   {
-    name: "Savannah Suite",
+    name: "Deluxe Room",
     description:
-      "A spacious luxury suite featuring panoramic views of Lukenya Hills, premium furnishings, and a private balcony.",
+      "A spacious and comfortable room designed for couples, business travellers, and holiday guests seeking a peaceful stay.",
+
+    pricing: {
+      bedBreakfast: 6000,
+      halfBoard: 8000,
+      fullBoard: 9000,
+    },
+
     amenities: [
-      "King Size Bed",
-      "Private Balcony",
-      "Free Wi-Fi",
-      "Smart TV",
-      "En-suite Bathroom",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80&auto=format",
-  },
-  {
-    name: "Acacia Room",
-    description:
-      "A peaceful room perfect for couples or solo travellers looking for comfort and privacy.",
-    amenities: [
-      "Queen Bed",
-      "Garden View",
+      "Double Bed",
       "Free Wi-Fi",
       "Hot Shower",
+      "Wardrobe",
+      "Daily Housekeeping",
     ],
-    image:
-      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=1000&q=80&auto=format",
+
+    images: [
+      "/images/deluxe/deluxe-1.jpeg",
+      "/images/deluxe/deluxe-2.jpeg",
+      "/images/deluxe/deluxe-3.jpeg",
+      "/images/deluxe/deluxe-4.jpeg",
+      "/images/deluxe/deluxe-5.jpeg",
+      "/images/deluxe/deluxe-6.jpeg",
+    ],
   },
+
   {
-    name: "Family Cottage",
+    name: "Deluxe Twin Room",
     description:
-      "Designed for families, offering generous living space with quick access to gardens and recreational facilities.",
+      "Perfect for friends, colleagues, and small groups, featuring two comfortable beds and modern amenities.",
+
+    pricing: {
+      bedBreakfast: 10000,
+      halfBoard: 11000,
+      fullBoard: 12000,
+    },
+
     amenities: [
-      "2 Bedrooms",
-      "Living Room",
+      "Twin Beds",
       "Free Wi-Fi",
-      "Family Friendly",
+      "Hot Shower",
+      "Wardrobe",
+      "Daily Housekeeping",
     ],
-    image:
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1000&q=80&auto=format",
-  },
-  {
-    name: "Executive Villa",
-    description:
-      "Our most exclusive accommodation for executives, honeymooners, and VIP guests seeking maximum privacy.",
-    amenities: [
-      "King Suite",
-      "Private Lounge",
-      "Private Patio",
-      "Luxury Bathroom",
+
+    images: [
+      "/images/deluxe-twin/deluxe-twin-1.jpeg",
+      "/images/deluxe-twin/deluxe-twin-2.jpeg",
     ],
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1000&q=80&auto=format",
   },
+
   {
-    name: "Garden Deluxe Room",
+    name: "Superior Room",
     description:
-      "Modern accommodation overlooking beautifully landscaped gardens with a calm and relaxing atmosphere.",
+      "A premium room offering extra comfort, elegant interiors, and a relaxing environment for leisure or business stays.",
+
+    pricing: {
+      bedBreakfast: 8000,
+      halfBoard: 9000,
+      fullBoard: 10000,
+    },
+
     amenities: [
       "Queen Bed",
-      "Garden View",
-      "Breakfast Included",
       "Free Wi-Fi",
+      "Smart TV",
+      "Hot Shower",
+      "Daily Housekeeping",
     ],
-    image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1000&q=80&auto=format",
+
+    images: [
+      "/images/superior/superior-1.jpeg",
+      "/images/superior/superior-2.jpeg",
+      "/images/superior/superior-3.jpeg",
+      "/images/superior/superior-4.jpeg",
+    ],
+  },
+
+  {
+    name: "Executive Room",
+    description:
+      "Our finest accommodation designed for executives, honeymooners, and guests seeking maximum comfort and privacy.",
+
+    pricing: {
+      bedBreakfast: 9000,
+      halfBoard: 10000,
+      fullBoard: 11000,
+    },
+
+    amenities: [
+      "King Bed",
+      "Smart TV",
+      "Luxury Bathroom",
+      "Free Wi-Fi",
+      "Work Desk",
+    ],
+
+    images: [
+      "/images/executive/executive-1.jpeg",
+      "/images/executive/executive-2.jpeg",
+    ],
   },
 ];
 

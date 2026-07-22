@@ -112,7 +112,7 @@ export default function Conference() {
       <CTABanner
         title="Host Your Next Event at Lukenya Alkebu Resort"
         subtitle="Contact our team today to discuss conference packages, venue availability, and customized event solutions."
-        buttonText="Enquire Today"
+        buttonText="Book Your Stay"
       />
     </>
   );

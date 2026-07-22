@@ -37,7 +37,7 @@ export default function Accommodation() {
       <CTABanner
         title="Ready to Book Your Stay?"
         subtitle="Contact our team today to check availability, room rates, and special packages."
-        buttonText="Make an Enquiry"
+        buttonText="Book Your Stay"
       />
     </>
   );

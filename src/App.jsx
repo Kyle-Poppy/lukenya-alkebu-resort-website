@@ -19,28 +19,28 @@ import Contact from "@/pages/Contact";
 import PageNotFound from "./lib/PageNotFound";
 
 export default function App() {
-  return (
-    <QueryClientProvider client={queryClientInstance}>
-      <Router>
-        <ScrollToTop />
+  return (
+    <QueryClientProvider client={queryClientInstance}>
+      <Router>
+        <ScrollToTop />
 
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/accommodation" element={<Accommodation />} />
-            <Route path="/conference" element={<Conference />} />
-            <Route path="/retreats" element={<Retreats />} />
-            <Route path="/team-building" element={<TeamBuilding />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/accommodation" element={<Accommodation />} />
+            <Route path="/conference" element={<Conference />} />
+            <Route path="/retreats" element={<Retreats />} />
+            <Route path="/team-building" element={<TeamBuilding />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
 
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
 
-        <Toaster />
-      </Router>
-    </QueryClientProvider>
-  );
+        <Toaster />
+      </Router>
+    </QueryClientProvider>
+  );
 }
