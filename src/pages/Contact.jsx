@@ -49,9 +49,9 @@ export default function Contact() {
                     <p className="text-muted-foreground mt-2">
                       Lukenya Alkebu Resort,
                       <br />
-                      Lukenya Hills,
+                      Lukenya Motocross Road, Malkiel Street,
                       <br />
-                      Machakos County, Kenya
+                      Athi River, Machakos County.
                     </p>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function Contact() {
                     </h3>
 
                     <p className="text-muted-foreground mt-2">
-                      Monday to Friday
+                      Monday to Sunday
                       <br />
                       8:00 AM to 5:00 PM
                     </p>

@@ -110,9 +110,9 @@ export default function Footer() {
                 <span className="text-cream/75">
                   Lukenya Alkebu Resort,
                   <br />
-                  Lukenya Hills
+                  Lukenya Motocross Road, Malkiel Street,
                   <br />
-                  Machakos County, Kenya
+                  Athi River, Machakos County.
                 </span>
               </li>
 
