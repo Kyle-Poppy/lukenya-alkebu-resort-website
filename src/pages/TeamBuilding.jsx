@@ -37,10 +37,10 @@ export default function TeamBuilding() {
   return (
     <>
       <PageHero
-        title="Team Building"
-        subtitle="Strengthen teamwork, leadership, and collaboration in the peaceful surroundings of Lukenya Hills."
-        image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80&auto=format"
-      />
+  title="Team Building"
+  subtitle="Strengthen teamwork, leadership, and collaboration in the peaceful surroundings of Lukenya Hills."
+  image="/images/team-building/team-building-1.jpeg"
+/>
 
       <section className="py-24 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
@@ -61,10 +61,13 @@ export default function TeamBuilding() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="bg-white rounded-2xl shadow-md p-8 text-center"
+                className="group rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-burnt hover:shadow-2xl"
               >
-                <div className="w-16 h-16 rounded-full bg-burnt/10 flex items-center justify-center mx-auto">
-                  <highlight.icon className="text-burnt" size={30} />
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt">
+                  <highlight.icon
+  size={30}
+  className="text-burnt transition-colors duration-300 group-hover:text-white"
+/>
                 </div>
 
                 <h3 className="font-heading text-xl font-bold text-navy mt-6">
@@ -87,7 +90,7 @@ export default function TeamBuilding() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80&auto=format"
+            src="/images/team-building/team-building-2.jpeg"
             alt="Team Building Activities"
             className="w-full h-[450px] rounded-2xl shadow-lg object-cover"
           />
@@ -126,7 +129,7 @@ export default function TeamBuilding() {
       <CTABanner
         title="Plan Your Next Team Building Event"
         subtitle="Contact our team today to create a customized team-building experience for your organization."
-        buttonText="Make an Enquiry"
+        buttonText="Book Us"
       />
     </>
   );

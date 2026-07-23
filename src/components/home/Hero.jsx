@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
 
       <img
-        src="/images/hero.jpg"
+        src="/images/field/field-2.jpeg"
         alt="Lukenya Alkebu Resort"
         loading="eager"
         draggable={false}
@@ -31,15 +31,13 @@ export default function Hero() {
         </p>
 
         <h1 className="mt-5 text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-cream leading-tight">
-          Escape Into Nature.
+          Experience Comfort,
           <br />
-          Stay In Comfort.
+          Nature & Hospitality
         </h1>
 
         <p className="mt-8 text-lg md:text-xl text-cream/90 max-w-3xl mx-auto leading-8">
-          Experience premium accommodation, conference facilities,
-          corporate retreats, church retreats, team building activities,
-          and memorable family getaways at Lukenya Alkebu Resort.
+          Nestled along the beautiful Lukenya Hills, we offer comfortable accommodation, modern conference facilities, corporate and church retreats, exciting team building experiences, delicious cuisine, and unforgettable family getaways.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -63,15 +61,15 @@ export default function Hero() {
         <div className="mt-14 flex flex-wrap justify-center gap-4">
 
           <span className="bg-white/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full text-sm">
-            Accommodation
+            Luxury Rooms
           </span>
 
           <span className="bg-white/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full text-sm">
-            Conferences
+            Conference Facilities
           </span>
 
           <span className="bg-white/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full text-sm">
-            Retreats
+            Retreats & Camping
           </span>
 
           <span className="bg-white/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full text-sm">

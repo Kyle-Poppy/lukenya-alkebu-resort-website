@@ -44,27 +44,30 @@ export default function RoomCard({
     >
       <div className="grid md:grid-cols-2 items-center">
 
-        <div className="relative h-[420px] overflow-hidden">
+        <div className="relative h-[320px] md:h-[420px] lg:h-[500px] overflow-hidden bg-gray-100">
 
           <img
             src={room.images[currentImage]}
             alt={room.name}
             loading="lazy"
-            className="w-full h-full object-cover object-center transition-all duration-500"
+            className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
           />
+          <div className="absolute top-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+  {currentImage + 1} / {room.images.length}
+</div>
 
           {room.images.length > 1 && (
             <>
               <button
                 onClick={previousImage}
-                className="select-none absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 text-white backdrop-blur-sm p-2 shadow hover:bg-white"
+                className="select-none absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white backdrop-blur-md p-2 transition hover:bg-burnt"
               >
                 <ChevronLeft size={22} />
               </button>
 
               <button
                 onClick={nextImage}
-                className="select-none absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 text-white backdrop-blur-sm p-2 shadow hover:bg-white"
+                className="select-none absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white backdrop-blur-md p-2 transition hover:bg-burnt"
               >
                 <ChevronRight size={22} />
               </button>
@@ -93,6 +96,10 @@ export default function RoomCard({
 
         <div className="p-8 lg:p-10">
 
+          <p className="text-sm uppercase tracking-[0.25em] text-burnt font-semibold mb-2">
+  Accommodation
+</p>
+
           <h2 className="font-heading text-3xl font-bold text-navy">
             {room.name}
           </h2>
@@ -103,11 +110,11 @@ export default function RoomCard({
 
           <div className="mt-6 rounded-xl bg-cream p-5">
 
-            <h3 className="font-semibold text-burnt mb-3">
+            <h3 className="mb-4 text-lg font-bold text-burnt">
               Room Rates
             </h3>
 
-            <div className="space-y-2 text-slate-700">
+            <div className="space-y-3 text-slate-700">
 
               <div className="flex justify-between">
                 <span>Bed & Breakfast</span>

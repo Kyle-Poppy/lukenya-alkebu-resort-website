@@ -3,43 +3,42 @@ export const services = [
     title: "Accommodation",
     description:
       "Elegant rooms, cottages, and suites designed for comfort, relaxation, and breathtaking views of Lukenya Hills.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format",
+    image: "/images/deluxe/deluxe-1.jpeg",
   },
+
   {
     title: "Conferencing",
     description:
       "Modern conference facilities suitable for meetings, seminars, workshops, and executive events.",
-    image:
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80&auto=format",
+    image: "/images/conference-room/conference-room-1.jpeg",
   },
+
   {
     title: "Corporate Retreats",
     description:
       "Escape the office and strengthen your team in a peaceful environment designed for productivity.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&auto=format",
+    image: "/images/retreat/retreat-1.jpeg",
   },
+
   {
     title: "Church Retreats",
     description:
       "Quiet surroundings ideal for prayer, fellowship, leadership meetings, and spiritual renewal.",
-    image:
-      "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=800&q=80&auto=format",
+    image: "/images/retreat/retreat-2.jpeg",
   },
+
   {
     title: "Team Building",
     description:
       "Outdoor activities that promote leadership, communication, trust, and collaboration.",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&auto=format",
+    image: "/images/team-building/team-building-1.jpeg",
   },
+
   {
     title: "Family Outings",
     description:
       "Beautiful outdoor spaces, delicious meals, and memorable experiences for the whole family.",
-    image:
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80&auto=format",
+    image: "/images/team-building/team-building-2.jpeg",
   },
 ];
 
@@ -191,66 +190,139 @@ export const testimonials = [
 ];
 
 export const galleryImages = [
+
+  // ROOMS
+
   {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&auto=format",
+    src: "/images/deluxe/deluxe-1.jpeg",
     category: "Rooms",
   },
   {
-    src: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=900&q=80&auto=format",
+    src: "/images/deluxe/deluxe-2.jpeg",
     category: "Rooms",
   },
   {
-    src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900&q=80&auto=format",
+    src: "/images/superior/superior-1.jpeg",
     category: "Rooms",
   },
   {
-    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80&auto=format",
-    category: "Pool",
+    src: "/images/executive/executive-1.jpeg",
+    category: "Rooms",
   },
   {
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80&auto=format",
+    src: "/images/deluxe-twin/deluxe-twin-1.jpeg",
+    category: "Rooms",
+  },
+  {
+    src: "/images/deluxe/deluxe-6.jpeg",
+    category: "Rooms",
+  },
+
+
+
+  // CUISINE
+
+  {
+    src: "/images/food/food-1.jpeg",
+    category: "Cuisine",
+  },
+  {
+    src: "/images/food/food-2.jpeg",
+    category: "Cuisine",
+  },
+  {
+    src: "/images/food/food-3.jpeg",
+    category: "Cuisine",
+  },
+  {
+    src: "/images/food/food-4.jpeg",
+    category: "Cuisine",
+  },
+  {
+    src: "/images/food/food-5.jpeg",
+    category: "Cuisine",
+  },
+  {
+    src: "/images/food/food-6.jpeg",
+    category: "Cuisine",
+  },
+
+
+
+  // CONFERENCE
+
+  {
+    src: "/images/conference-room/conference-room-1.jpeg",
     category: "Conference",
   },
   {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&auto=format",
+    src: "/images/conference-room/conference-room-2.jpeg",
     category: "Conference",
   },
   {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&auto=format",
+    src: "/images/conference-room/conference-room-3.jpeg",
     category: "Conference",
   },
+
+
+
+  // NATURE
+
   {
-    src: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=900&q=80&auto=format",
+    src: "/images/field/field-1.jpeg",
     category: "Nature",
   },
   {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&auto=format",
+    src: "/images/field/field-2.jpeg",
     category: "Nature",
   },
   {
-    src: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=900&q=80&auto=format",
+    src: "/images/field/field-3.jpeg",
     category: "Nature",
   },
+
+
+
+  // TEAM BUILDING
+
   {
-    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&auto=format",
+    src: "/images/team-building/team-building-1.jpeg",
     category: "Team Building",
   },
   {
-    src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=900&q=80&auto=format",
-    category: "Family",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80&auto=format",
-    category: "Family",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80&auto=format",
-    category: "Rooms",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&auto=format",
+    src: "/images/team-building/team-building-2.jpeg",
     category: "Team Building",
   },
+  {
+    src: "/images/team-building/team-building-3.jpeg",
+    category: "Team Building",
+  },
+  {
+    src: "/images/team-building/team-building-4.jpeg",
+    category: "Team Building",
+  },
+
+
+
+  // FAMILY
+
+  {
+    src: "/images/retreat/retreat-1.jpeg",
+    category: "Retreats",
+  },
+  {
+    src: "/images/retreat/retreat-2.jpeg",
+    category: "Retreats",
+  },
+  {
+    src: "/images/retreat/retreat-3.jpeg",
+    category: "Retreats",
+  },
+  {
+    src: "/images/retreat/retreat-4.jpeg",
+    category: "Retreats",
+  },
+
 ];
 
 export const navLinks = [

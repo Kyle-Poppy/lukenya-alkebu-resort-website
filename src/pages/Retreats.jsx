@@ -1,44 +1,46 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 import PageHero from "@/components/shared/PageHero";
 import SectionHeading from "@/components/shared/SectionHeading";
 import CTABanner from "@/components/shared/CTABanner";
+import BookingModal from "@/components/booking/BookingModal";
 
 const retreatTypes = [
   {
     title: "Corporate Retreats",
     text: "Take your team away from the busy office environment and into a peaceful setting designed for planning, collaboration, leadership development, and relaxation. Our retreat packages combine comfortable accommodation with conference facilities and outdoor activities.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&q=80&auto=format",
+    image: "/images/retreat/retreat-1.jpeg",
   },
   {
     title: "Church Retreats",
     text: "Enjoy a quiet environment for prayer, worship, Bible study, fellowship, and spiritual renewal. Our gardens and open spaces provide the ideal atmosphere for meaningful gatherings and reflection.",
-    image:
-      "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1000&q=80&auto=format",
+    image: "/images/retreat/retreat-2.jpeg",
   },
   {
     title: "School Retreats",
     text: "Create memorable educational experiences for students through leadership camps, mentorship programs, educational workshops, and outdoor learning activities in a safe and inspiring environment.",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&q=80&auto=format",
+    image: "/images/retreat/retreat-3.jpeg",
   },
   {
     title: "Family Retreats",
     text: "Reconnect with loved ones through peaceful family getaways, outdoor activities, quality accommodation, and beautiful natural surroundings suitable for guests of all ages.",
-    image:
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1000&q=80&auto=format",
+    image: "/images/retreat/retreat-4.jpeg",
   },
 ];
 
 export default function Retreats() {
+
+  const [bookingOpen, setBookingOpen] = useState(false);
+const [selectedRetreat, setSelectedRetreat] = useState("");
+
   return (
     <>
       <PageHero
-        title="Retreats"
-        subtitle="Discover peaceful spaces for renewal, learning, teamwork, and spiritual growth."
-        image="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1600&q=80&auto=format"
-      />
+  title="Retreats"
+  subtitle="Discover peaceful spaces for renewal, learning, teamwork, and spiritual growth."
+  image="/images/field/field-2.jpeg"
+/>
 
       <section className="py-24 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
@@ -64,30 +66,50 @@ export default function Retreats() {
                 }`}
               >
                 <img
-                  src={retreat.image}
-                  alt={retreat.title}
-                  className="w-full h-96 object-cover rounded-2xl shadow-lg"
-                />
+  src={retreat.image}
+  alt={retreat.title}
+  className="w-full h-96 object-cover rounded-2xl shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+/>
 
                 <div>
-                  <h2 className="font-heading text-3xl font-bold text-navy">
-                    {retreat.title}
-                  </h2>
+  <span className="text-burnt uppercase tracking-[0.3em] text-sm font-semibold">
+    Retreat Package
+  </span>
 
-                  <p className="mt-5 text-muted-foreground leading-8">
-                    {retreat.text}
-                  </p>
-                </div>
+  <h2 className="mt-4 font-heading text-4xl font-bold text-navy">
+    {retreat.title}
+  </h2>
+
+  <p className="mt-6 text-muted-foreground leading-8">
+    {retreat.text}
+  </p>
+
+  <button
+  onClick={() => {
+  setSelectedRetreat(retreat.title.replace("Retreats", "Retreat"));
+  setBookingOpen(true);
+}}
+  className="mt-8 rounded-full bg-burnt px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-burnt-light hover:scale-105"
+>
+  Book This Retreat
+</button>
+</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      <BookingModal
+  isOpen={bookingOpen}
+  onClose={() => setBookingOpen(false)}
+  selectedRoom={selectedRetreat}
+/>
+
       <CTABanner
         title="Start Planning Your Retreat"
         subtitle="Our team is ready to help you organize a memorable retreat tailored to your group's needs."
-        buttonText="Make an Enquiry"
+        buttonText="Book Your Retreat"
       />
     </>
   );

@@ -37,7 +37,7 @@ export default function ServicesOverview() {
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
-                  className="w-full h-60 object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-60 object-cover object-center transition-transform duration-500 hover:scale-110"
                 />
 
               </div>

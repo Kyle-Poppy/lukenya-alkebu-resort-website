@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Loader2, CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -17,6 +18,7 @@ const services = [
 ];
 
 export default function ContactForm() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -92,12 +94,23 @@ export default function ContactForm() {
           Our reservations team will contact you shortly.
         </p>
 
-        <button
-          onClick={() => setStatus("idle")}
-          className="mt-8 rounded-full bg-burnt px-8 py-3 font-semibold text-white hover:bg-burnt-light transition-colors"
-        >
-          Send Another Enquiry
-        </button>
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+
+  <button
+    onClick={() => setStatus("idle")}
+    className="rounded-full bg-burnt px-8 py-3 font-semibold text-white hover:bg-burnt-light transition-colors"
+  >
+    Send Another Enquiry
+  </button>
+
+  <button
+  onClick={() => navigate("/")}
+  className="rounded-full border border-gray-300 px-8 py-3 font-semibold text-slate-700 hover:bg-gray-100 transition-colors"
+>
+  Back to Home
+</button>
+
+</div>
 
       </div>
     );

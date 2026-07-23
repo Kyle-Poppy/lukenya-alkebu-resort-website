@@ -51,14 +51,14 @@ additionalRequests: "",
 preferredContact: "WhatsApp",
 });
 useEffect(() => {
-  if (isOpen && selectedRoom) {
-    setReservationType("Accommodation");
+  if (!isOpen || !selectedRoom) return;
 
-    setFormData((prev) => ({
-      ...prev,
-      roomCategory: selectedRoom,
-    }));
-  }
+  setReservationType("Conference & Retreats");
+
+  setFormData((prev) => ({
+    ...prev,
+    conferenceType: selectedRoom,
+  }));
 }, [isOpen, selectedRoom]);
 
 const handleChange = (e) => {
@@ -604,18 +604,41 @@ if (!isOpen) return null;
         </label>
 
         <select
-          name="conferenceType"
-          value={formData.conferenceType}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-burnt focus:outline-none"
-        >
-          <option value="">Select Booking Type</option>
-          <option>Corporate Conference</option>
-          <option>Corporate Retreat</option>
-          <option>Church Retreat</option>
-          <option>Seminar</option>
-          <option>Workshop</option>
-        </select>
+  name="conferenceType"
+  value={formData.conferenceType}
+  onChange={handleChange}
+  className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-burnt focus:outline-none"
+>
+  <option value="">Select Booking Type</option>
+
+  <option value="Corporate Conference">
+    Corporate Conference
+  </option>
+
+  <option value="Corporate Retreat">
+    Corporate Retreat
+  </option>
+
+  <option value="Church Retreat">
+    Church Retreat
+  </option>
+
+  <option value="School Retreat">
+    School Retreat
+  </option>
+
+  <option value="Family Retreat">
+    Family Retreat
+  </option>
+
+  <option value="Seminar">
+    Seminar
+  </option>
+
+  <option value="Workshop">
+    Workshop
+  </option>
+</select>
       </div>
 
       <div>

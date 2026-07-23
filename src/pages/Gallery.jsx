@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import PageHero from "@/components/shared/PageHero";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -9,15 +10,17 @@ import { galleryImages } from "@/lib/resortData";
 const categories = [
   "All",
   "Rooms",
-  "Pool",
   "Conference",
+  "Cuisine",
   "Nature",
   "Team Building",
-  "Family",
+  "Retreats",
 ];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const filteredImages =
     activeCategory === "All"
@@ -26,12 +29,60 @@ export default function Gallery() {
           (image) => image.category === activeCategory
         );
 
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedImage(null);
+      }
+
+      if (e.key === "ArrowRight") {
+        const newIndex =
+          selectedIndex === filteredImages.length - 1
+            ? 0
+            : selectedIndex + 1;
+
+        setSelectedIndex(newIndex);
+        setSelectedImage(filteredImages[newIndex]);
+      }
+
+      if (e.key === "ArrowLeft") {
+        const newIndex =
+          selectedIndex === 0
+            ? filteredImages.length - 1
+            : selectedIndex - 1;
+
+        setSelectedIndex(newIndex);
+        setSelectedImage(filteredImages[newIndex]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage, selectedIndex, filteredImages]);
+
+  useEffect(() => {
+  if (selectedImage) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [selectedImage]);
+
   return (
     <>
       <PageHero
         title="Gallery"
         subtitle="Take a closer look at the beauty, comfort, and experiences waiting for you at Lukenya Alkebu Resort."
-        image="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1600&q=80&auto=format"
+        image="/images/field/field-2.jpeg"
       />
 
       <section className="py-24 px-4 bg-cream">
@@ -62,6 +113,10 @@ export default function Gallery() {
             {filteredImages.map((image, index) => (
               <motion.div
                 key={`${image.src}-${index}`}
+                onClick={() => {
+    setSelectedImage(image);
+    setSelectedIndex(index);
+  }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -70,7 +125,7 @@ export default function Gallery() {
                   delay: (index % 6) * 0.08,
                 }}
                 whileHover={{ y: -6 }}
-                className="relative overflow-hidden rounded-2xl shadow-lg group"
+                className="relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer"
               >
                 <img
                   src={image.src}
@@ -90,6 +145,72 @@ export default function Gallery() {
           </div>
         </div>
       </section>
+       
+      <AnimatePresence>
+      {selectedImage && (
+  <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.25 }}
+  className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
+  onClick={() => setSelectedImage(null)}
+>
+    <motion.img
+  key={selectedImage.src}
+  src={selectedImage.src}
+  alt={selectedImage.category}
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.9 }}
+  transition={{ duration: 0.3 }}
+  className="max-w-6xl max-h-[90vh] rounded-xl shadow-2xl"
+  onClick={(e) => e.stopPropagation()}
+/>
+
+    <button
+  onClick={(e) => {
+    e.stopPropagation();
+
+    const newIndex =
+      selectedIndex === 0
+        ? filteredImages.length - 1
+        : selectedIndex - 1;
+
+    setSelectedIndex(newIndex);
+    setSelectedImage(filteredImages[newIndex]);
+  }}
+  className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white hover:bg-burnt transition"
+>
+  <ChevronLeft size={32} />
+</button>
+
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+
+    const newIndex =
+      selectedIndex === filteredImages.length - 1
+        ? 0
+        : selectedIndex + 1;
+
+    setSelectedIndex(newIndex);
+    setSelectedImage(filteredImages[newIndex]);
+  }}
+  className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white hover:bg-burnt transition"
+>
+  <ChevronRight size={32} />
+</button>
+
+    <button
+      onClick={() => setSelectedImage(null)}
+      className="absolute top-6 right-6 text-white text-5xl hover:text-burnt transition"
+    >
+      ×
+    </button>
+  </motion.div>
+)}
+</AnimatePresence>
 
       <CTABanner
         title="Experience Lukenya Alkebu in Person"

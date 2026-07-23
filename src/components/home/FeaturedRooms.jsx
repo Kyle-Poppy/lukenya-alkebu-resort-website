@@ -48,6 +48,10 @@ export default function FeaturedRooms() {
                   {room.name}
                 </h3>
 
+                <p className="mt-2 text-burnt font-semibold">
+  From KES {room.pricing.bedBreakfast.toLocaleString()} / Night
+</p>
+
                 <p className="mt-3 text-slate-600 leading-7">
                   {room.description}
                 </p>

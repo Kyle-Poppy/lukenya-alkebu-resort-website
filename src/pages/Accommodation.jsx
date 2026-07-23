@@ -10,7 +10,7 @@ export default function Accommodation() {
       <PageHero
         title="Accommodation"
         subtitle="Elegant rooms and suites designed for comfort, relaxation, and unforgettable stays."
-        image="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=1600&q=80&auto=format"
+        image="/images/deluxe/deluxe-1.jpeg"
       />
 
       <section className="py-24 px-4 bg-cream">
@@ -18,7 +18,7 @@ export default function Accommodation() {
           <SectionHeading
             eyebrow="Stay With Us"
             title="Choose the Perfect Room"
-            subtitle="Whether you are travelling alone, with family, or as part of a group, our accommodation offers comfort, modern amenities, and peaceful surroundings."
+            subtitle="Choose from our Deluxe, Deluxe Twin, Superior, and Executive rooms, each thoughtfully designed to provide comfort, privacy, and exceptional value for every guest."
           />
 
           <div className="space-y-12">

@@ -29,7 +29,7 @@ export default function About() {
       <PageHero
         title="About Lukenya Alkebu Resort"
         subtitle="Where nature, comfort, and hospitality come together."
-        image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600&q=80&auto=format"
+        image="/images/field/field-2.jpeg"
       />
 
       <section className="py-24 px-4 bg-cream">
@@ -41,10 +41,10 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=80&auto=format"
-              alt="Lukenya Alkebu Resort"
-              className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
-            />
+  src="/images/about.jpeg"
+  alt="Lukenya Alkebu Resort"
+  className="rounded-2xl shadow-xl w-full h-[600px] object-cover object-center"
+/>
           </motion.div>
 
           <motion.div
@@ -76,6 +76,26 @@ export default function About() {
               Every visit is built around comfort, excellent service, and a
               peaceful atmosphere.
             </p>
+            
+            <div className="mt-8 grid grid-cols-3 gap-4">
+  <img
+    src="/images/food/food-8.jpeg"
+    alt="Lukenya Grounds"
+    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+  />
+
+  <img
+    src="/images/field/field-2.jpeg"
+    alt="Lukenya Resort"
+    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+  />
+
+  <img
+    src="/images/retreat/retreat-4.jpeg"
+    alt="Lukenya Nature"
+    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+  />
+</div>
           </motion.div>
         </div>
       </section>
@@ -99,10 +119,13 @@ export default function About() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="bg-cream rounded-2xl p-8 shadow-md text-center"
+                className="group rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-burnt hover:shadow-2xl"
               >
-                <div className="w-16 h-16 rounded-full bg-burnt/10 flex items-center justify-center mx-auto">
-                  <value.icon className="text-burnt" size={30} />
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt">
+                  <value.icon
+  size={30}
+  className="text-burnt transition-colors duration-300 group-hover:text-white"
+/>
                 </div>
 
                 <h3 className="font-heading text-2xl font-bold text-navy mt-6">
