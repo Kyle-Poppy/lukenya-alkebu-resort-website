@@ -23,6 +23,7 @@ export default function SectionHeading({
         </p>
       )}
 
+      {/* Semantic HTML: The dynamic Heading tag (default h2) ensures proper SEO hierarchy across different pages */}
       <Heading className="mt-3 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy leading-tight">
         {title}
       </Heading>

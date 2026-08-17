@@ -6,7 +6,7 @@ import { services } from "@/lib/resortData";
 
 export default function ServicesOverview() {
   return (
-    <section className="bg-cream py-24 px-6">
+    <section className="bg-cream py-24 px-6" aria-label="Resort Services Overview">
       <div className="max-w-7xl mx-auto">
 
         <SectionHeading
@@ -33,10 +33,12 @@ export default function ServicesOverview() {
 
               <div className="overflow-hidden">
 
+                {/* Performance: Added decoding="async" for smoother page scrolling */}
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-60 object-cover object-center transition-transform duration-500 hover:scale-110"
                 />
 
@@ -52,12 +54,13 @@ export default function ServicesOverview() {
                   {service.description}
                 </p>
 
+                {/* SEO & Accessibility: Added sr-only span for descriptive link text without changing visual design */}
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 mt-6 text-burnt font-semibold hover:gap-3 transition-all"
                 >
-                  Learn More
-                  <ArrowRight size={18} />
+                  Learn More <span className="sr-only">about {service.title}</span>
+                  <ArrowRight size={18} aria-hidden="true" />
                 </Link>
 
               </div>

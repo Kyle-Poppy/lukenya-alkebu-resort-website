@@ -5,10 +5,14 @@ export default function PageNotFound() {
   const pageName = location.pathname;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream px-6">
+    /* Semantic HTML & Accessibility: Use main tag and link aria-labelledby to the error heading */
+    <main 
+      aria-labelledby="error-code"
+      className="min-h-screen flex items-center justify-center bg-cream px-6"
+    >
       <div className="max-w-lg text-center">
 
-        <h1 className="text-8xl font-bold text-burnt">
+        <h1 id="error-code" className="text-8xl font-bold text-burnt">
           404
         </h1>
 
@@ -33,6 +37,6 @@ export default function PageNotFound() {
         </Link>
 
       </div>
-    </div>
+    </main>
   );
 }

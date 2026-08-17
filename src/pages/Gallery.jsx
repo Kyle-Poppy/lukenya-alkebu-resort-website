@@ -66,19 +66,20 @@ export default function Gallery() {
   }, [selectedImage, selectedIndex, filteredImages]);
 
   useEffect(() => {
-  if (selectedImage) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [selectedImage]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
 
   return (
-    <>
+    /* Semantic HTML: Wrapped page content in a main landmark */
+    <main>
       <PageHero
         title="Gallery"
         subtitle="Take a closer look at the beauty, comfort, and experiences waiting for you at Lukenya Alkebu Resort."
@@ -93,10 +94,12 @@ export default function Gallery() {
             subtitle="Browse through our accommodation, conference facilities, natural surroundings, and memorable guest experiences."
           />
 
-          <div className="flex flex-wrap justify-center gap-4 mb-14">
+          <div className="flex flex-wrap justify-center gap-4 mb-14" role="tablist" aria-label="Gallery Categories">
             {categories.map((category) => (
               <button
                 key={category}
+                role="tab"
+                aria-selected={activeCategory === category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeCategory === category
@@ -114,9 +117,9 @@ export default function Gallery() {
               <motion.div
                 key={`${image.src}-${index}`}
                 onClick={() => {
-    setSelectedImage(image);
-    setSelectedIndex(index);
-  }}
+                  setSelectedImage(image);
+                  setSelectedIndex(index);
+                }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -129,7 +132,9 @@ export default function Gallery() {
               >
                 <img
                   src={image.src}
-                  alt={image.category}
+                  alt={`Lukenya Alkebu Resort ${image.category} gallery photo ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
@@ -147,76 +152,82 @@ export default function Gallery() {
       </section>
        
       <AnimatePresence>
-      {selectedImage && (
-  <motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-  transition={{ duration: 0.25 }}
-  className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
-  onClick={() => setSelectedImage(null)}
->
-    <motion.img
-  key={selectedImage.src}
-  src={selectedImage.src}
-  alt={selectedImage.category}
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  exit={{ opacity: 0, scale: 0.9 }}
-  transition={{ duration: 0.3 }}
-  className="max-w-6xl max-h-[90vh] rounded-xl shadow-2xl"
-  onClick={(e) => e.stopPropagation()}
-/>
+        {selectedImage && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Resort image gallery lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.img
+              key={selectedImage.src}
+              src={selectedImage.src}
+              alt={`Enlarged ${selectedImage.category} gallery view`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-6xl max-h-[90vh] rounded-xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
 
-    <button
-  onClick={(e) => {
-    e.stopPropagation();
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
 
-    const newIndex =
-      selectedIndex === 0
-        ? filteredImages.length - 1
-        : selectedIndex - 1;
+                const newIndex =
+                  selectedIndex === 0
+                    ? filteredImages.length - 1
+                    : selectedIndex - 1;
 
-    setSelectedIndex(newIndex);
-    setSelectedImage(filteredImages[newIndex]);
-  }}
-  className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white hover:bg-burnt transition"
->
-  <ChevronLeft size={32} />
-</button>
+                setSelectedIndex(newIndex);
+                setSelectedImage(filteredImages[newIndex]);
+              }}
+              aria-label="Previous gallery image"
+              className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full bg-white/25 p-3 text-white hover:bg-burnt transition"
+            >
+              <ChevronLeft size={32} aria-hidden="true" />
+            </button>
 
-<button
-  onClick={(e) => {
-    e.stopPropagation();
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
 
-    const newIndex =
-      selectedIndex === filteredImages.length - 1
-        ? 0
-        : selectedIndex + 1;
+                const newIndex =
+                  selectedIndex === filteredImages.length - 1
+                    ? 0
+                    : selectedIndex + 1;
 
-    setSelectedIndex(newIndex);
-    setSelectedImage(filteredImages[newIndex]);
-  }}
-  className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white hover:bg-burnt transition"
->
-  <ChevronRight size={32} />
-</button>
+                setSelectedIndex(newIndex);
+                setSelectedImage(filteredImages[newIndex]);
+              }}
+              aria-label="Next gallery image"
+              className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full bg-white/25 p-3 text-white hover:bg-burnt transition"
+            >
+              <ChevronRight size={32} aria-hidden="true" />
+            </button>
 
-    <button
-      onClick={() => setSelectedImage(null)}
-      className="absolute top-6 right-6 text-white text-5xl hover:text-burnt transition"
-    >
-      ×
-    </button>
-  </motion.div>
-)}
-</AnimatePresence>
+            <button
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close lightbox"
+              className="absolute top-6 right-6 text-white text-5xl hover:text-burnt transition"
+            >
+              ×
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <CTABanner
         title="Experience Lukenya Alkebu in Person"
         subtitle="The photos are only the beginning. Visit us and create unforgettable memories."
         buttonText="Make an Enquiry"
       />
-    </>
+    </main>
   );
 }

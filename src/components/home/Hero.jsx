@@ -6,12 +6,17 @@ export default function Hero() {
   const { openBooking } = useBooking();
 
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+    <section 
+      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      aria-label="Welcome to Lukenya Alkebu Resort"
+    >
 
+      {/* Performance & SEO: Added fetchpriority="high" for Core Web Vitals and descriptive alt text */}
       <img
         src="/images/field/field-2.jpeg"
-        alt="Lukenya Alkebu Resort"
+        alt="Scenic view of the lush grounds at Lukenya Alkebu Resort"
         loading="eager"
+        fetchpriority="high"
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -79,7 +84,8 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/70 animate-bounce">
+      {/* Accessibility: aria-hidden="true" prevents screen readers from reading the decorative arrow */}
+      <div aria-hidden="true" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/70 animate-bounce">
         ↓
       </div>
 

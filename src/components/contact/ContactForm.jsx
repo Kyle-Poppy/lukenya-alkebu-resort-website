@@ -80,9 +80,11 @@ export default function ContactForm() {
     return (
       <div className="rounded-2xl bg-white p-10 shadow-xl text-center">
 
+        {/* Accessibility: Hide decorative icon from screen readers */}
         <CheckCircle
           size={70}
           className="mx-auto text-green-600 mb-6"
+          aria-hidden="true"
         />
 
         <h2 className="font-heading text-3xl font-bold text-navy">
@@ -96,21 +98,21 @@ export default function ContactForm() {
 
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
 
-  <button
-    onClick={() => setStatus("idle")}
-    className="rounded-full bg-burnt px-8 py-3 font-semibold text-white hover:bg-burnt-light transition-colors"
-  >
-    Send Another Enquiry
-  </button>
+          <button
+            onClick={() => setStatus("idle")}
+            className="rounded-full bg-burnt px-8 py-3 font-semibold text-white hover:bg-burnt-light transition-colors"
+          >
+            Send Another Enquiry
+          </button>
 
-  <button
-  onClick={() => navigate("/")}
-  className="rounded-full border border-gray-300 px-8 py-3 font-semibold text-slate-700 hover:bg-gray-100 transition-colors"
->
-  Back to Home
-</button>
+          <button
+            onClick={() => navigate("/")}
+            className="rounded-full border border-gray-300 px-8 py-3 font-semibold text-slate-700 hover:bg-gray-100 transition-colors"
+          >
+            Back to Home
+          </button>
 
-</div>
+        </div>
 
       </div>
     );
@@ -245,7 +247,8 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-center text-red-600">
+        /* Accessibility: Added role="alert" so screen readers announce form errors immediately */
+        <p role="alert" className="text-center text-red-600">
           Something went wrong. Please try again.
         </p>
       )}
@@ -257,9 +260,11 @@ export default function ContactForm() {
       >
         {status === "sending" ? (
           <>
+            {/* Accessibility: Hide decorative loading spinner from screen readers */}
             <Loader2
               size={20}
               className="animate-spin"
+              aria-hidden="true"
             />
             Sending...
           </>

@@ -142,6 +142,12 @@
     @apply transition-colors duration-300;
   }
 
+  /* Accessibility: Keyboard focus indicators */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
   ::selection {
     @apply bg-burnt text-white;
   }
@@ -161,6 +167,21 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #de7a44;
+  }
+
+  /* Accessibility & Performance: Respect user preferences for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

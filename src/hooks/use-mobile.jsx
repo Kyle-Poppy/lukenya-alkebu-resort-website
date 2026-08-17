@@ -11,7 +11,9 @@ export function useIsMobile() {
     );
 
     const handleChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+      // Performance & Accuracy: Using mediaQuery.matches ensures exact synchronization 
+      // with Tailwind's CSS media queries, avoiding scrollbar-width discrepancies.
+      setIsMobile(mediaQuery.matches);
     };
 
     handleChange();

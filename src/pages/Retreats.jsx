@@ -30,17 +30,44 @@ const retreatTypes = [
 ];
 
 export default function Retreats() {
-
   const [bookingOpen, setBookingOpen] = useState(false);
-const [selectedRetreat, setSelectedRetreat] = useState("");
+  const [selectedRetreat, setSelectedRetreat] = useState("");
+
+  // Schema.org structured data for retreat package discoverability
+  const retreatsSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": retreatTypes.map((retreat, index) => ({
+      "@type": "Service",
+      "position": index + 1,
+      "name": retreat.title,
+      "description": retreat.text,
+      "provider": {
+        "@type": "LodgingBusiness",
+        "name": "Lukenya Alkebu Resort",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressCountry": "Kenya"
+        }
+      }
+    }))
+  };
 
   return (
-    <>
+    /* Semantic HTML: Wrapped page content in a main landmark */
+    <main>
+      {/* Schema.org Injection for SEO & AI Discoverability */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(retreatsSchema) }}
+      />
+
       <PageHero
-  title="Retreats"
-  subtitle="Discover peaceful spaces for renewal, learning, teamwork, and spiritual growth."
-  image="/images/field/field-2.jpeg"
-/>
+        title="Retreats"
+        subtitle="Discover peaceful spaces for renewal, learning, teamwork, and spiritual growth."
+        image="/images/field/field-2.jpeg"
+      />
 
       <section className="py-24 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
@@ -66,34 +93,37 @@ const [selectedRetreat, setSelectedRetreat] = useState("");
                 }`}
               >
                 <img
-  src={retreat.image}
-  alt={retreat.title}
-  className="w-full h-96 object-cover rounded-2xl shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl"
-/>
+                  src={retreat.image}
+                  alt={`${retreat.title} setup at Lukenya Alkebu Resort`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-96 object-cover rounded-2xl shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                />
 
                 <div>
-  <span className="text-burnt uppercase tracking-[0.3em] text-sm font-semibold">
-    Retreat Package
-  </span>
+                  <span className="text-burnt uppercase tracking-[0.3em] text-sm font-semibold">
+                    Retreat Package
+                  </span>
 
-  <h2 className="mt-4 font-heading text-4xl font-bold text-navy">
-    {retreat.title}
-  </h2>
+                  <h2 className="mt-4 font-heading text-4xl font-bold text-navy">
+                    {retreat.title}
+                  </h2>
 
-  <p className="mt-6 text-muted-foreground leading-8">
-    {retreat.text}
-  </p>
+                  <p className="mt-6 text-muted-foreground leading-8">
+                    {retreat.text}
+                  </p>
 
-  <button
-  onClick={() => {
-  setSelectedRetreat(retreat.title.replace("Retreats", "Retreat"));
-  setBookingOpen(true);
-}}
-  className="mt-8 rounded-full bg-burnt px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-burnt-light hover:scale-105"
->
-  Book This Retreat
-</button>
-</div>
+                  <button
+                    onClick={() => {
+                      setSelectedRetreat(retreat.title.replace("Retreats", "Retreat"));
+                      setBookingOpen(true);
+                    }}
+                    aria-label={`Book ${retreat.title}`}
+                    className="mt-8 rounded-full bg-burnt px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-burnt-light hover:scale-105"
+                  >
+                    Book This Retreat
+                  </button>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -101,16 +131,16 @@ const [selectedRetreat, setSelectedRetreat] = useState("");
       </section>
 
       <BookingModal
-  isOpen={bookingOpen}
-  onClose={() => setBookingOpen(false)}
-  selectedRoom={selectedRetreat}
-/>
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        selectedRoom={selectedRetreat}
+      />
 
       <CTABanner
         title="Start Planning Your Retreat"
         subtitle="Our team is ready to help you organize a memorable retreat tailored to your group's needs."
         buttonText="Book Your Retreat"
       />
-    </>
+    </main>
   );
 }

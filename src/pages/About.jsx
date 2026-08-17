@@ -25,7 +25,8 @@ const values = [
 
 export default function About() {
   return (
-    <>
+    /* Semantic HTML: Wrapped page content in a main landmark */
+    <main>
       <PageHero
         title="About Lukenya Alkebu Resort"
         subtitle="Where nature, comfort, and hospitality come together."
@@ -41,10 +42,12 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <img
-  src="/images/about.jpeg"
-  alt="Lukenya Alkebu Resort"
-  className="rounded-2xl shadow-xl w-full h-[600px] object-cover object-center"
-/>
+              src="/images/about.jpeg"
+              alt="Lukenya Alkebu Resort scenic view"
+              loading="lazy"
+              decoding="async"
+              className="rounded-2xl shadow-xl w-full h-[600px] object-cover object-center"
+            />
           </motion.div>
 
           <motion.div
@@ -78,24 +81,30 @@ export default function About() {
             </p>
             
             <div className="mt-8 grid grid-cols-3 gap-4">
-  <img
-    src="/images/food/food-8.jpeg"
-    alt="Lukenya Grounds"
-    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
-  />
+              <img
+                src="/images/food/food-8.jpeg"
+                alt="Dining and culinary experience at Lukenya Alkebu Resort"
+                loading="lazy"
+                decoding="async"
+                className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+              />
 
-  <img
-    src="/images/field/field-2.jpeg"
-    alt="Lukenya Resort"
-    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
-  />
+              <img
+                src="/images/field/field-2.jpeg"
+                alt="Open outdoor grounds at Lukenya Resort"
+                loading="lazy"
+                decoding="async"
+                className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+              />
 
-  <img
-    src="/images/retreat/retreat-4.jpeg"
-    alt="Lukenya Nature"
-    className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
-  />
-</div>
+              <img
+                src="/images/retreat/retreat-4.jpeg"
+                alt="Peaceful nature environment at Lukenya"
+                loading="lazy"
+                decoding="async"
+                className="h-32 w-full rounded-xl object-cover shadow-md hover:scale-105 transition"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -110,7 +119,7 @@ export default function About() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <motion.div
+              <motion.article
                 key={value.title}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -121,11 +130,15 @@ export default function About() {
                 }}
                 className="group rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-burnt hover:shadow-2xl"
               >
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt">
+                {/* Accessibility: Hide decorative icon wrapper from screen readers */}
+                <div 
+                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt"
+                  aria-hidden="true"
+                >
                   <value.icon
-  size={30}
-  className="text-burnt transition-colors duration-300 group-hover:text-white"
-/>
+                    size={30}
+                    className="text-burnt transition-colors duration-300 group-hover:text-white"
+                  />
                 </div>
 
                 <h3 className="font-heading text-2xl font-bold text-navy mt-6">
@@ -135,7 +148,7 @@ export default function About() {
                 <p className="text-muted-foreground mt-4 leading-7">
                   {value.text}
                 </p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -145,6 +158,6 @@ export default function About() {
         title="Plan Your Visit Today"
         subtitle="Whether you are planning a holiday, conference, retreat, or family getaway, we are ready to welcome you."
       />
-    </>
+    </main>
   );
 }

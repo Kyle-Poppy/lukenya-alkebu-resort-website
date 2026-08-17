@@ -34,13 +34,41 @@ const highlights = [
 ];
 
 export default function TeamBuilding() {
+  // Schema.org structured data for team-building service discoverability
+  const teamBuildingSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Team Building at Lukenya Alkebu Resort",
+    "provider": {
+      "@type": "LodgingBusiness",
+      "name": "Lukenya Alkebu Resort",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "Kenya"
+      }
+    },
+    "description": "Spacious outdoor grounds and professionally planned team-building activities designed to strengthen communication, leadership, trust, and collaboration.",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Nairobi, Kenya"
+    }
+  };
+
   return (
-    <>
+    /* Semantic HTML: Wrapped page content in a main landmark */
+    <main>
+      {/* Schema.org Injection for SEO & AI Discoverability */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamBuildingSchema) }}
+      />
+
       <PageHero
-  title="Team Building"
-  subtitle="Strengthen teamwork, leadership, and collaboration in the peaceful surroundings of Lukenya Hills."
-  image="/images/team-building/team-building-1.jpeg"
-/>
+        title="Team Building"
+        subtitle="Strengthen teamwork, leadership, and collaboration in the peaceful surroundings of Lukenya Hills."
+        image="/images/team-building/team-building-1.jpeg"
+      />
 
       <section className="py-24 px-4 bg-cream">
         <div className="max-w-7xl mx-auto">
@@ -52,7 +80,7 @@ export default function TeamBuilding() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {highlights.map((highlight, index) => (
-              <motion.div
+              <motion.article
                 key={highlight.title}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -63,11 +91,15 @@ export default function TeamBuilding() {
                 }}
                 className="group rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-burnt hover:shadow-2xl"
               >
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt">
+                {/* Accessibility: Hide decorative icon wrapper from screen readers */}
+                <div 
+                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-burnt/10 transition-all duration-300 group-hover:bg-burnt"
+                  aria-hidden="true"
+                >
                   <highlight.icon
-  size={30}
-  className="text-burnt transition-colors duration-300 group-hover:text-white"
-/>
+                    size={30}
+                    className="text-burnt transition-colors duration-300 group-hover:text-white"
+                  />
                 </div>
 
                 <h3 className="font-heading text-xl font-bold text-navy mt-6">
@@ -77,7 +109,7 @@ export default function TeamBuilding() {
                 <p className="text-muted-foreground mt-4 leading-7 text-sm">
                   {highlight.text}
                 </p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -91,7 +123,9 @@ export default function TeamBuilding() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             src="/images/team-building/team-building-2.jpeg"
-            alt="Team Building Activities"
+            alt="Groups engaging in interactive team building activities at Lukenya Alkebu Resort"
+            loading="lazy"
+            decoding="async"
             className="w-full h-[450px] rounded-2xl shadow-lg object-cover"
           />
 
@@ -131,6 +165,6 @@ export default function TeamBuilding() {
         subtitle="Contact our team today to create a customized team-building experience for your organization."
         buttonText="Book Us"
       />
-    </>
+    </main>
   );
 }

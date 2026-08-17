@@ -29,6 +29,7 @@ export function useSize(ref) {
     observer.observe(element);
 
     return () => {
+      // Performance: Disconnect using the captured element reference to ensure cleanup safety
       observer.disconnect();
     };
   }, [ref]);

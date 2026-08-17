@@ -1,5 +1,4 @@
 import { useState } from "react";
-import BookingModal from "@/components/booking/BookingModal";
 import { motion } from "framer-motion";
 import {
   Check,
@@ -12,10 +11,9 @@ export default function RoomCard({
   room,
   index = 0,
   reverse = false,
+  onBook,
 }) {
-
   const [currentImage, setCurrentImage] = useState(0);
-  const [bookingOpen, setBookingOpen] = useState(false);
 
   const nextImage = () => {
     setCurrentImage((prev) =>
@@ -46,39 +44,46 @@ export default function RoomCard({
 
         <div className="relative h-[320px] md:h-[420px] lg:h-[500px] overflow-hidden bg-gray-100">
 
+          {/* Performance: Added decoding="async" for smoother scrolling */}
           <img
             src={room.images[currentImage]}
             alt={room.name}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
           />
           <div className="absolute top-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
-  {currentImage + 1} / {room.images.length}
-</div>
+            {currentImage + 1} / {room.images.length}
+          </div>
 
           {room.images.length > 1 && (
             <>
+              {/* Accessibility: Added aria-label for screen readers */}
               <button
                 onClick={previousImage}
+                aria-label="Previous image"
                 className="select-none absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white backdrop-blur-md p-2 transition hover:bg-burnt"
               >
-                <ChevronLeft size={22} />
+                <ChevronLeft size={22} aria-hidden="true" />
               </button>
 
+              {/* Accessibility: Added aria-label for screen readers */}
               <button
                 onClick={nextImage}
+                aria-label="Next image"
                 className="select-none absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white backdrop-blur-md p-2 transition hover:bg-burnt"
               >
-                <ChevronRight size={22} />
+                <ChevronRight size={22} aria-hidden="true" />
               </button>
 
               <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
 
-                {room.images.map((_, i) => (
-
+                {/* Accessibility: Added aria-label to dot indicators */}
+                {room.images.map((_, i) => (    
                   <button
                     key={i}
                     onClick={() => setCurrentImage(i)}
+                    aria-label={`Go to image ${i + 1}`}
                     className={`h-3 w-3 rounded-full transition ${
                       currentImage === i
                         ? "bg-white"
@@ -97,8 +102,8 @@ export default function RoomCard({
         <div className="p-8 lg:p-10">
 
           <p className="text-sm uppercase tracking-[0.25em] text-burnt font-semibold mb-2">
-  Accommodation
-</p>
+            Accommodation
+          </p>
 
           <h2 className="font-heading text-3xl font-bold text-navy">
             {room.name}
@@ -149,9 +154,11 @@ export default function RoomCard({
                   key={amenity}
                   className="flex items-center gap-3 text-slate-700"
                 >
+                  {/* Accessibility: Hid decorative icon from screen readers */}
                   <Check
                     size={18}
                     className="text-burnt flex-shrink-0"
+                    aria-hidden="true"
                   />
 
                   <span>{amenity}</span>
@@ -165,23 +172,17 @@ export default function RoomCard({
           </div>
 
           <button
-  onClick={() => setBookingOpen(true)}
-  className="inline-flex items-center gap-2 mt-10 rounded-full bg-burnt px-8 py-3 font-semibold text-cream transition hover:bg-burnt-light"
->
-  Book Now
-  <ArrowRight size={18} />
-</button>
+            onClick={onBook}
+            className="inline-flex items-center gap-2 mt-10 rounded-full bg-burnt px-8 py-3 font-semibold text-cream transition hover:bg-burnt-light"
+          >
+            Book Now
+            {/* Accessibility: Hid decorative icon from screen readers */}
+            <ArrowRight size={18} aria-hidden="true" />
+          </button>
 
         </div>
 
       </div>
-
-<BookingModal
-  isOpen={bookingOpen}
-  onClose={() => setBookingOpen(false)}
-  selectedRoom={room.name}
-/>
-
     </motion.article>
   );
 }

@@ -8,12 +8,15 @@ export default function PageHero({
 }) {
   return (
     <section
+      aria-labelledby="page-hero-title"
       className={`relative ${height} min-h-[400px] flex items-center justify-center overflow-hidden`}
     >
+      {/* Performance: Added fetchpriority="high" to optimize Largest Contentful Paint (LCP) */}
       <img
         src={image}
         alt={title}
         loading="eager"
+        fetchpriority="high"
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover select-none"
       />
@@ -26,7 +29,8 @@ export default function PageHero({
         transition={{ duration: 0.7 }}
         className="relative z-10 px-6 text-center max-w-4xl"
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-cream leading-tight">
+        {/* Accessibility: Linked ID to the section's aria-labelledby */}
+        <h1 id="page-hero-title" className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-cream leading-tight">
           {title}
         </h1>
 

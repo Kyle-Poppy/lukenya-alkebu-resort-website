@@ -31,6 +31,10 @@ export default function ScrollToTop() {
             behavior: "smooth",
             block: "start",
           });
+          
+          // Accessibility: Shift focus to the anchored element for keyboard & screen reader users
+          element.setAttribute("tabindex", "-1");
+          element.focus({ preventScroll: true });
         }
       }, 100);
 

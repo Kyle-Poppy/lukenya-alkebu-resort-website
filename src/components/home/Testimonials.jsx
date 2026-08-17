@@ -5,7 +5,7 @@ import { testimonials } from "@/lib/resortData";
 
 export default function Testimonials() {
   return (
-    <section className="bg-cream py-24 px-6">
+    <section className="bg-cream py-24 px-6" aria-label="Guest Testimonials">
       <div className="max-w-7xl mx-auto">
 
         <SectionHeading
@@ -30,26 +30,33 @@ export default function Testimonials() {
               className="rounded-2xl bg-white p-8 shadow-lg hover:shadow-2xl transition-all"
             >
 
+              {/* Accessibility: Hide decorative quote icon */}
               <Quote
                 size={34}
                 className="text-burnt mb-5"
+                aria-hidden="true"
               />
 
-              <div className="flex gap-1 mb-5">
-
+              {/* Accessibility: Group stars into a single readable rating for screen readers */}
+              <div 
+                className="flex gap-1 mb-5" 
+                role="img" 
+                aria-label="5 out of 5 stars"
+              >
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
                     size={18}
                     className="fill-burnt text-burnt"
+                    aria-hidden="true"
                   />
                 ))}
-
               </div>
 
-              <p className="italic leading-8 text-slate-600">
+              {/* Semantic HTML: Use blockquote for actual citations */}
+              <blockquote className="italic leading-8 text-slate-600">
                 "{testimonial.quote}"
-              </p>
+              </blockquote>
 
               <div className="mt-8 border-t pt-5">
 

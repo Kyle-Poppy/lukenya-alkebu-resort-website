@@ -12,9 +12,18 @@ function LayoutContent() {
 
   return (
     <div className="min-h-screen flex flex-col bg-cream">
+      {/* Accessibility: Skip to main content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-burnt focus:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-burnt"
+      >
+        Skip to main content
+      </a>
+
       <Navbar />
 
-      <main className="flex-1">
+      {/* Semantic HTML: id added for the skip link target */}
+      <main id="main-content" className="flex-1" tabIndex="-1">
         <Outlet />
       </main>
 

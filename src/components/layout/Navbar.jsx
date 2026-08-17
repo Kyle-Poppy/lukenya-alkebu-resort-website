@@ -16,7 +16,8 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Performance: Added passive flag to prevent scroll jank
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -55,14 +56,18 @@ export default function Navbar() {
           to="/"
           className="flex items-center"
         >
+          {/* Performance: Explicit width and height attributes added */}
           <img
             src="/images/logo.png"
             alt="Lukenya Alkebu Resort"
+            width="80"
+            height="80"
             className="h-20 w-20 rounded-full object-cover bg-white p-1 shadow-lg transition-transform duration-300 hover:scale-105"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        {/* Accessibility: Added aria-label to distinguish navigation landmarks */}
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -92,17 +97,20 @@ export default function Navbar() {
           className="lg:hidden text-cream"
           aria-label="Toggle navigation"
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
 
       <div
+        id="mobile-menu"
+        aria-hidden={!open}
         className={`overflow-hidden transition-all duration-300 lg:hidden ${
           open ? "max-h-screen" : "max-h-0"
         }`}
       >
-        <nav className="border-t border-white/10 bg-navy">
+        <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-navy">
           <div className="flex flex-col py-5">
             {navLinks.map((link) => (
               <NavLink

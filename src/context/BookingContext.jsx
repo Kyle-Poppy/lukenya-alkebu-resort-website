@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 
 const BookingContext = createContext();
 
@@ -9,14 +9,19 @@ export function BookingProvider({ children }) {
 
   const closeBooking = () => setBookingOpen(false);
 
+  // Performance: Memoize the context value to prevent unnecessary re-renders 
+  // of components that consume this context.
+  const value = useMemo(
+    () => ({
+      bookingOpen,
+      openBooking,
+      closeBooking,
+    }),
+    [bookingOpen]
+  );
+
   return (
-    <BookingContext.Provider
-      value={{
-        bookingOpen,
-        openBooking,
-        closeBooking,
-      }}
-    >
+    <BookingContext.Provider value={value}>
       {children}
     </BookingContext.Provider>
   );

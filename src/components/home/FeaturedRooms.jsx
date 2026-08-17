@@ -6,7 +6,7 @@ import { rooms } from "@/lib/resortData";
 
 export default function FeaturedRooms() {
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white py-24 px-6" aria-label="Featured Accommodation">
       <div className="max-w-7xl mx-auto">
 
         <SectionHeading
@@ -33,12 +33,14 @@ export default function FeaturedRooms() {
 
               <div className="overflow-hidden">
 
+                {/* Performance: Added decoding="async" for smoother background rendering */}
                 <img
-  src={room.images[0]}
-  alt={room.name}
-  loading="lazy"
-  className="w-full h-56 object-cover object-center transition-transform duration-500 hover:scale-110"
-/>
+                  src={room.images[0]}
+                  alt={room.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-56 object-cover object-center transition-transform duration-500 hover:scale-110"
+                />
 
               </div>
 
@@ -49,8 +51,8 @@ export default function FeaturedRooms() {
                 </h3>
 
                 <p className="mt-2 text-burnt font-semibold">
-  From KES {room.pricing.bedBreakfast.toLocaleString()} / Night
-</p>
+                  From KES {room.pricing.bedBreakfast.toLocaleString()} / Night
+                </p>
 
                 <p className="mt-3 text-slate-600 leading-7">
                   {room.description}
@@ -85,7 +87,8 @@ export default function FeaturedRooms() {
             className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-8 py-4 font-semibold text-navy transition-all duration-300 hover:bg-navy hover:text-white"
           >
             View All Rooms
-            <ArrowRight size={18} />
+            {/* Accessibility: Hide decorative icon from screen readers */}
+            <ArrowRight size={18} aria-hidden="true" />
           </Link>
 
         </div>

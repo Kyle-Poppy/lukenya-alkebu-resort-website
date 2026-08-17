@@ -5,8 +5,52 @@ import ContactForm from "@/components/contact/ContactForm";
 import CTABanner from "@/components/shared/CTABanner";
 
 export default function Contact() {
+  // Schema.org structured data for local resort business discoverability
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Lukenya Alkebu Resort",
+    "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&auto=format",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lukenya Motocross Road, Malkiel Street",
+      "addressLocality": "Athi River",
+      "addressRegion": "Machakos County",
+      "addressCountry": "KE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -1.4505553,
+      "longitude": 37.0352447
+    },
+    "telephone": "+254703841682",
+    "email": "lukenyaalkeburesort2019@gmail.com",
+    "url": "https://lukenyaalkeburesort.com",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  };
+
   return (
-    <div>
+    /* Semantic HTML: Wrapped page content in a main landmark */
+    <main>
+      {/* Schema.org Injection for Local SEO & AI Discoverability */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+
       <PageHero
         title="Contact Us"
         subtitle="We would love to help you plan your next visit."
@@ -41,7 +85,8 @@ export default function Contact() {
               <div className="space-y-6">
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-                  <MapPin className="text-burnt shrink-0 mt-1" size={24} />
+                  {/* Accessibility: Hide decorative icon from screen readers */}
+                  <MapPin className="text-burnt shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
                     <h3 className="font-heading text-lg font-bold text-navy">
                       Visit Us
@@ -57,52 +102,55 @@ export default function Contact() {
                 </div>
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-  <Phone className="text-burnt shrink-0 mt-1" size={24} />
-  <div>
-    <h3 className="font-heading text-lg font-bold text-navy">
-      Call Us
-    </h3>
+                  {/* Accessibility: Hide decorative icon from screen readers */}
+                  <Phone className="text-burnt shrink-0 mt-1" size={24} aria-hidden="true" />
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy">
+                      Call Us
+                    </h3>
 
-    <p className="text-muted-foreground mt-2">
-      <a
-        href="tel:+254703841682"
-        className="hover:text-burnt"
-      >
-        0703 841 682
-      </a>
+                    <p className="text-muted-foreground mt-2">
+                      <a
+                        href="tel:+254703841682"
+                        className="hover:text-burnt"
+                      >
+                        0703 841 682
+                      </a>
 
-      <br />
+                      <br />
 
-      <a
-        href="tel:+254731796683"
-        className="hover:text-burnt"
-      >
-        0731 796 683
-      </a>
-    </p>
-  </div>
-</div>
-
-                <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-  <Mail className="text-burnt shrink-0 mt-1" size={24} />
-  <div>
-    <h3 className="font-heading text-lg font-bold text-navy">
-      Email
-    </h3>
-
-    <p className="text-muted-foreground mt-2">
-      <a
-        href="mailto:lukenyaalkeburesort2019@gmail.com"
-        className="hover:text-burnt break-all"
-      >
-        lukenyaalkeburesort2019@gmail.com
-      </a>
-    </p>
-  </div>
-</div>
+                      <a
+                        href="tel:+254731796683"
+                        className="hover:text-burnt"
+                      >
+                        0731 796 683
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
                 <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
-                  <Clock className="text-burnt shrink-0 mt-1" size={24} />
+                  {/* Accessibility: Hide decorative icon from screen readers */}
+                  <Mail className="text-burnt shrink-0 mt-1" size={24} aria-hidden="true" />
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy">
+                      Email
+                    </h3>
+
+                    <p className="text-muted-foreground mt-2">
+                      <a
+                        href="mailto:lukenyaalkeburesort2019@gmail.com"
+                        className="hover:text-burnt break-all"
+                      >
+                        lukenyaalkeburesort2019@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
+                  {/* Accessibility: Hide decorative icon from screen readers */}
+                  <Clock className="text-burnt shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
                     <h3 className="font-heading text-lg font-bold text-navy">
                       Office Hours
@@ -123,17 +171,17 @@ export default function Contact() {
               </div>
 
               <div className="rounded-xl overflow-hidden shadow-lg h-80 mt-10">
-  <iframe
-    title="Lukenya Alkebu Resort Location"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.539754072558!2d37.0352447!3d-1.4505552999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f75082602e99b%3A0xa85af0376768ed8a!2sLukenya%20Alkebu%20Resort!5e0!3m2!1sen!2ske!4v1784538202555!5m2!1sen!2ske"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="strict-origin-when-cross-origin"
-  />
-</div>
+                <iframe
+                  title="Lukenya Alkebu Resort Location Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.539754072558!2d37.0352447!3d-1.4505552999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f75082602e99b%3A0xa85af0376768ed8a!2sLukenya%20Alkebu%20Resort!5e0!3m2!1sen!2ske!4v1784538202555!5m2!1sen!2ske"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -152,6 +200,6 @@ export default function Contact() {
         title="Ready to Experience Lukenya Alkebu?"
         subtitle="Reach out today and let us help you plan a memorable stay."
       />
-    </div>
+    </main>
   );
 }
