@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow specific private routes if you add a booking admin portal later
+# Disallow: /admin/
+
+Sitemap: https://lukenyaalkeburesort.com/sitemap.xml
